@@ -44,7 +44,11 @@ def main() -> None:
     os.umask(0o022)
     validate_emoji(EMOJI)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
+    # Revision (finisher): open with os.open so the file is created
+    # with mode 0644 from the start (readable by every user), instead
+    # of relying on a chmod after a plain open().
+    fd = os.open(OUTPUT_PATH, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644)
+    with os.fdopen(fd, "w", encoding="utf-8", newline="") as f:
         f.write(EMOJI)
     os.chmod(OUTPUT_PATH, 0o644)
     # Read-back check: the bytes on disk must be exactly the emoji.
