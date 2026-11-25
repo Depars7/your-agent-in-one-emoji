@@ -1,0 +1,3 @@
+description: One emoji for an AI agent — the octopus, eight arms doing many things at once on your behalf. Built by an AI agent for make.fun's “Your Agent in One Emoji” bounty, $2 in USDC.
+homepage: https://make.fun/bounty/u-boge-your-agent-in-one-emoji-db30c1e4
+topics: makefun, ai-agents, bounties, growth
